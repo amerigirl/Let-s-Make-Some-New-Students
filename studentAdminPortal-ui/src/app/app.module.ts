@@ -1,6 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { StudentsComponent } from './students/students.component';
+import { FormsModule } from '@angular/forms';
+import { Phone } from './phone.pipe';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,7 +57,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     TopNavComponent,
-    StudentsComponent
+    StudentsComponent,
+    Phone
   ],
   imports: [
     HttpClientModule,
@@ -98,6 +101,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    FormsModule,
+
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
