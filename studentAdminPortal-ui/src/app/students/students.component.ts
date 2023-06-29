@@ -4,7 +4,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Student } from '../models/ui-models/student.model';
 import { StudentService } from './student.service';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-students',
