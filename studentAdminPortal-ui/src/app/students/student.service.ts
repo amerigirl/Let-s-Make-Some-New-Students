@@ -15,6 +15,7 @@ export class StudentService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //gets ALL students
   getStudents(): Observable<Student[]>{
 
     return this.httpClient.get<Student[]>(this.baseApiUrl + '/students');
@@ -22,7 +23,7 @@ export class StudentService {
 
   //returns a single student
   getStudent(studentId: string): Observable<Student> {
-    return this.httpClient.get<Student>(this.baseApiUrl + '/students' + studentId);
+    return this.httpClient.get<Student>(this.baseApiUrl + '/students/' + studentId); //added second slash
   }
 
 }

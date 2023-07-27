@@ -1,0 +1,7 @@
+.top-row {
+  padding: 1em 0; /* the zero is for left and right; 1em from the top and bottom*/
+}
+
+.mat-form-field {
+width: 100%;
+}

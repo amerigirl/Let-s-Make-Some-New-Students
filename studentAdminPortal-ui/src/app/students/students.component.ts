@@ -12,7 +12,7 @@ import { StudentService } from './student.service';
 })
 export class StudentsComponent implements OnInit {
   students: Student[] = [];
-  displayedColumns: string[] = ['firstName', 'lastName', 'dateOfBirth', 'email', 'mobile','gender'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'dateOfBirth', 'email', 'mobile','gender', 'edit'];
   dataSource: MatTableDataSource<Student> = new MatTableDataSource<Student>();
 
   //this is how you connect the paginator to the datasource
@@ -38,7 +38,6 @@ export class StudentsComponent implements OnInit {
           this.dataSource.sort = this.matSort
         }
     });
-
 
   }
 
