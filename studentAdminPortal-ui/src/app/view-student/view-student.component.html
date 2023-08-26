@@ -94,7 +94,11 @@
              <textarea matInput [(ngModel)]="student.address.postalAddress" name="postalAddress"></textarea>
             </mat-form-field>
           </div>
-
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button mat-raised-button color="primary" (click)="onUpdate()">Update</button>
+          </div>
         </div>
 
       </form>

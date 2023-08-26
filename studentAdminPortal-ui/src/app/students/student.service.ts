@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Student } from '../models/api-models/student.model';
+import { UpdateStudentRequest } from '../models/api-models/updateStudentRequest.model';
 //injectables can be used by any component to fetch data the service talks to
 
 @Injectable({
@@ -24,6 +25,23 @@ export class StudentService {
   //returns a single student
   getStudent(studentId: string): Observable<Student> {
     return this.httpClient.get<Student>(this.baseApiUrl + '/students/' + studentId); //added second slash
+  }
+
+  //returns an updatedStudent
+
+  updateStudent(studentId: string, studentRequest: Student): Observable<Student> {
+    const updateStudentRequest: UpdateStudentRequest = {
+      firstName: studentRequest.firstName,
+      lastName: studentRequest.lastName,
+      dateOfBirth: studentRequest.dateOfBirth,
+      email: studentRequest.email,
+      mobile: studentRequest.mobile,
+      genderId: studentRequest.genderId,
+      physicalAddress: studentRequest.address.physicalAddress,
+      postalAddress: studentRequest.address.postalAddress
+    }
+
+    return this.httpClient.put<Student>(this.baseApiUrl + '/students/' + studentId, updateStudentRequest);
   }
 
 }
