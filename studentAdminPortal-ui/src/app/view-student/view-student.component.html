@@ -56,7 +56,7 @@
         </div>
         <div class=" div row">
 
-          <div class="div col-xs-6">
+          <!-- <div class="div col-xs-6">
              <mat-form-field appearance="outline">
                 <mat-label>Gender</mat-label>
                <mat-select [(ngModel)]="student.genderId" name="gender">
@@ -66,7 +66,7 @@
 
                </mat-select>
              </mat-form-field>
-          </div>
+          </div> -->
 
           <div class="div col-xs-6">
             <mat-form-field appearance="outline">
@@ -97,7 +97,10 @@
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <button mat-raised-button color="primary" (click)="onUpdate()">Update</button>
+            <div class="row between-xs"> <!--separates buttons evenly on the same line :)-->
+                          <button mat-raised-button color="primary" (click)="onUpdate()">Update</button>
+                          <button mat-raised-button color="warn" (click)="onDelete()">Delete</button>
+            </div>
           </div>
         </div>
 
