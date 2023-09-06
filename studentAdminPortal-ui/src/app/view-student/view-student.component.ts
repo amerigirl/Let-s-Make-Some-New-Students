@@ -15,6 +15,8 @@ import { StudentService } from '../students/student.service';
 })
 export class ViewStudentComponent implements OnInit {
   studentId: string | null | undefined;
+  isNewStudent = false;
+  header = '';
 
   student: Student = {
     id: '',
@@ -47,7 +49,8 @@ export class ViewStudentComponent implements OnInit {
     private readonly genderService: GenderService,
     private readonly route: ActivatedRoute, //creates a route for the student ID
     private snackbar: MatSnackBar,
-    private router: Router) {}
+    private router: Router
+  ) {}
 
   //fetching students from the API
   ngOnInit(): void {
@@ -55,6 +58,18 @@ export class ViewStudentComponent implements OnInit {
       //subscribes to the params coming from the route
       (params) => {
         this.studentId = params.get('id');
+
+        if (this.studentId) {
+          //If the route contains 'add', ->new student functionality
+          if (this.studentId.toLowerCase() === 'Add'.toLowerCase()) {
+            this.isNewStudent = true;
+            this.header = 'Add New Student';
+          } else {
+            //else -> existing student functionality
+            this.isNewStudent = false;
+            this.header = 'Edit Student';
+          }
+        }
 
         if (this.studentId) {
           this.studentService
@@ -93,7 +108,7 @@ export class ViewStudentComponent implements OnInit {
         });
 
         setTimeout(() => {
-          this.router.navigateByUrl('')
+          this.router.navigateByUrl('');
         }, 2000);
       });
   }

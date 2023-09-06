@@ -14,3 +14,8 @@ table {
   border: 1px solid #bbb;
 }
 
+.add-button{
+  font-size: 10px;
+  left: 5px;
+  white-space: normal;
+}
