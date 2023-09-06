@@ -47,5 +47,9 @@ export class StudentService {
   deleteStudent(studentId: string): Observable<Student> { //this is from the api models (because the api is receiving the request)
   return this.httpClient.delete<Student>(this.baseApiUrl + '/students/'+ studentId);
   }
+
+  //addStudent(){
+    //a direct conversation with the database
+  //}
 }
 

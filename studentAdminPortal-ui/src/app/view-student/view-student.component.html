@@ -97,10 +97,14 @@
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <div class="row between-xs"> <!--separates buttons evenly on the same line :)-->
+            <div class="row between-xs" *ngIf="!isNewStudent"> <!--separates buttons evenly on the same line :)-->
                           <button mat-raised-button color="primary" (click)="onUpdate()">Update</button>
                           <button mat-raised-button color="warn" (click)="onDelete()">Delete</button>
             </div>
+            <div class="row between-xs" *ngIf="isNewStudent"> <!--separates buttons evenly on the same line :)-->
+              <button mat-raised-button color="primary" (click)="onAdd()">Add</button>
+
+</div>
           </div>
         </div>
 

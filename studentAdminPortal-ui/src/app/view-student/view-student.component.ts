@@ -112,4 +112,8 @@ export class ViewStudentComponent implements OnInit {
         }, 2000);
       });
   }
+
+  onAdd(): void {
+    //add this to the database
+  }
 }
