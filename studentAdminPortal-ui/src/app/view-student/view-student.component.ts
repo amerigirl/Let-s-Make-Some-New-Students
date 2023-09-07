@@ -114,6 +114,10 @@ export class ViewStudentComponent implements OnInit {
   }
 
   onAdd(): void {
-    //add this to the database
+    this.studentService
+      .addStudent(this.student)
+      .subscribe((successResponse) => {
+        console.log(successResponse);
+      });
   }
 }
