@@ -1,35 +1,37 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AddStudentRequest } from '../models/api-models/add-student-request.model';
 import { Student } from '../models/api-models/student.model';
 import { UpdateStudentRequest } from '../models/api-models/updateStudentRequest.model';
 //injectables can be used by any component to fetch data the service talks to
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-
 export class StudentService {
-
   private baseApiUrl = 'https://localhost:7010';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   //gets ALL students
-  getStudents(): Observable<Student[]>{
-
+  getStudents(): Observable<Student[]> {
     return this.httpClient.get<Student[]>(this.baseApiUrl + '/students');
   }
 
   //returns a single student
   getStudent(studentId: string): Observable<Student> {
-    return this.httpClient.get<Student>(this.baseApiUrl + '/students/' + studentId); //added second slash
+    return this.httpClient.get<Student>(
+      this.baseApiUrl + '/students/' + studentId
+    ); //added second slash
   }
 
   //returns an updatedStudent
 
-  updateStudent(studentId: string, studentRequest: Student): Observable<Student> {
+  updateStudent(
+    studentId: string,
+    studentRequest: Student
+  ): Observable<Student> {
     const updateStudentRequest: UpdateStudentRequest = {
       firstName: studentRequest.firstName,
       lastName: studentRequest.lastName,
@@ -38,18 +40,36 @@ export class StudentService {
       mobile: studentRequest.mobile,
       genderId: studentRequest.genderId,
       physicalAddress: studentRequest.address.physicalAddress,
-      postalAddress: studentRequest.address.postalAddress
-    }
+      postalAddress: studentRequest.address.postalAddress,
+    };
 
-    return this.httpClient.put<Student>(this.baseApiUrl + '/students/' + studentId, updateStudentRequest);
+    return this.httpClient.put<Student>(
+      this.baseApiUrl + '/students/' + studentId,
+      updateStudentRequest
+    );
   }
 
-  deleteStudent(studentId: string): Observable<Student> { //this is from the api models (because the api is receiving the request)
-  return this.httpClient.delete<Student>(this.baseApiUrl + '/students/'+ studentId);
+  deleteStudent(studentId: string): Observable<Student> {
+    //this is from the api models (because the api is receiving the request)
+    return this.httpClient.delete<Student>(
+      this.baseApiUrl + '/students/' + studentId
+    );
   }
 
-  //addStudent(){
-    //a direct conversation with the database
-  //}
+  addStudent(studentRequest: Student): Observable<Student> {
+    const addStudentRequest: AddStudentRequest = {
+      firstName: studentRequest.firstName,
+      lastName: studentRequest.lastName,
+      dateOfBirth: studentRequest.dateOfBirth,
+      email: studentRequest.email,
+      mobile: studentRequest.mobile,
+      genderId: studentRequest.genderId,
+      physicalAddress: studentRequest.address.physicalAddress,
+      postalAddress: studentRequest.address.postalAddress,
+    };
+    return this.httpClient.post<Student>(
+      this.baseApiUrl + '/students/add',
+      addStudentRequest
+    );
+  }
 }
-
