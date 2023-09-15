@@ -68,20 +68,19 @@ export class ViewStudentComponent implements OnInit {
             //else -> existing student functionality
             this.isNewStudent = false;
             this.header = 'Edit Student';
-          }
-        }
 
-        if (this.studentId) {
-          this.studentService
-            .getStudent(this.studentId)
-            .subscribe((successResponse) => {
-              this.student = successResponse; //assigns the student coming from the response to the new student
-            });
+            if (this.studentId) {
+              this.studentService
+                .getStudent(this.studentId)
+                .subscribe((successResponse) => {
+                  this.student = successResponse; //assigns the student coming from the response to the new student
+                });
+            }
+          }
 
           //fetching genderlist from the API
           this.genderService.getGenderList().subscribe((successResponse) => {
             this.genderList = successResponse;
-            console.log(successResponse);
           });
         }
       }
@@ -119,7 +118,13 @@ export class ViewStudentComponent implements OnInit {
     this.studentService
       .addStudent(this.student)
       .subscribe((successResponse) => {
-        console.log(successResponse);
+        this.snackbar.open('Student successfully added!', undefined, {
+          duration: 2000,
+        });
+
+        setTimeout(() => {
+          this.router.navigateByUrl('');
+        }, 2000);
       });
   }
 }
