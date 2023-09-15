@@ -113,6 +113,8 @@ export class ViewStudentComponent implements OnInit {
       });
   }
 
+  //you need to send the information WITHOUT the gender id and student id key
+  //this means you need to create a NEW object that doesn't containt these or call the object in the .ts file that doesn't contain them
   onAdd(): void {
     this.studentService
       .addStudent(this.student)

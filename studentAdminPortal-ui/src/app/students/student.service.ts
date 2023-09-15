@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { AddStudentRequest } from '../models/api-models/add-student-request.model';
 import { Student } from '../models/api-models/student.model';
 import { UpdateStudentRequest } from '../models/api-models/updateStudentRequest.model';
+import { v4 as uuidv4 } from 'uuid';
+
+
+
 //injectables can be used by any component to fetch data the service talks to
 
 @Injectable({
@@ -57,13 +61,17 @@ export class StudentService {
   }
 
   addStudent(studentRequest: Student): Observable<Student> {
+
+    // const genderIdGuid = uuidv4(); //this might be working!!
+    // studentRequest.genderId = genderIdGuid;
+    // studentRequest.dateOfBirth = new Date(studentRequest.dateOfBirth).toISOString();
+
     const addStudentRequest: AddStudentRequest = {
       firstName: studentRequest.firstName,
       lastName: studentRequest.lastName,
       dateOfBirth: studentRequest.dateOfBirth,
       email: studentRequest.email,
       mobile: studentRequest.mobile,
-      genderId: studentRequest.genderId,
       physicalAddress: studentRequest.address.physicalAddress,
       postalAddress: studentRequest.address.postalAddress,
     };
