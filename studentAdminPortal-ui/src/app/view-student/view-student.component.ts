@@ -17,6 +17,7 @@ export class ViewStudentComponent implements OnInit {
   studentId: string | null | undefined;
   isNewStudent = false;
   header = '';
+  displayProfileImageUrl = '';
 
   student: Student = {
     id: '',
@@ -64,6 +65,8 @@ export class ViewStudentComponent implements OnInit {
           if (this.studentId.toLowerCase() === 'Add'.toLowerCase()) {
             this.isNewStudent = true;
             this.header = 'Add New Student';
+            //creates a default image if one is not present
+            this.setImage();
           } else {
             //else -> existing student functionality
             this.isNewStudent = false;
@@ -126,5 +129,16 @@ export class ViewStudentComponent implements OnInit {
           this.router.navigateByUrl('');
         }, 2000);
       });
+  }
+
+  private setImage(): void {
+
+    if(this.student.profileImageUrl) {
+      //fetch the image by url
+    } else {
+      //display default
+      this.displayProfileImageUrl = 'assets/User.png';
+      console.log("it works");
+    }
   }
 }
