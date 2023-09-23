@@ -150,8 +150,9 @@
       </form>
     </div>
     <div class="col-xs-6">
+
       <div class="row center-xs">
-        <div class="div image-container">
+        <div class="image-container">
           <img
             class="image"
             [src]="displayProfileImageUrl"
@@ -159,6 +160,13 @@
           />
         </div>
       </div>
+
+    <div class="row">
+      <div class="col xs-12">
+        <input hidden type="file" #imageUpload (change)="uploadImage($event)">
+        <button mat-raised-button color="primary" (click)="imageUpload.click()">Upload Image</button>
+      </div>
+    </div>
     </div>
   </div>
 </div>

@@ -9,5 +9,16 @@ width: 100%;
 .image {
   height: 200px;
   width: 200px;
-  
+
 }
+
+image-container
+ {
+  background-color: #f7f7f7;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+ }

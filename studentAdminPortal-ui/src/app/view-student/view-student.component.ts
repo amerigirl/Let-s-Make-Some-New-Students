@@ -77,6 +77,7 @@ export class ViewStudentComponent implements OnInit {
                 .getStudent(this.studentId)
                 .subscribe((successResponse) => {
                   this.student = successResponse; //assigns the student coming from the response to the new student
+                  this.setImage();
                 });
             }
           }
@@ -131,14 +132,29 @@ export class ViewStudentComponent implements OnInit {
       });
   }
 
-  private setImage(): void {
+  uploadImage(event: any): void {
+    if (this.studentId) {
+      const file: File = event.target.files[0];
+      this.studentService
+        .uploadImage(this.studentId, file)
+        .subscribe((successResponse) => {
+          this.student.profileImageUrl = successResponse;
+          this.setImage();
 
-    if(this.student.profileImageUrl) {
+          this.snackbar.open('Profile image updated!', undefined, {
+            duration: 2000,
+          });
+        });
+    }
+  }
+
+  private setImage(): void {
+    if (this.student.profileImageUrl) {
       //fetch the image by url
+      this.displayProfileImageUrl = this.studentService.getImagePath(this.student.profileImageUrl);
     } else {
       //display default
       this.displayProfileImageUrl = 'assets/User.png';
-      console.log("it works");
     }
   }
 }

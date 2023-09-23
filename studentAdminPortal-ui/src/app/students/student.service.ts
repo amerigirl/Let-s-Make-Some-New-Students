@@ -5,9 +5,6 @@ import { AddStudentRequest } from '../models/api-models/add-student-request.mode
 import { Student } from '../models/api-models/student.model';
 import { UpdateStudentRequest } from '../models/api-models/updateStudentRequest.model';
 
-
-
-
 //injectables can be used by any component to fetch data the service talks to
 
 @Injectable({
@@ -18,24 +15,17 @@ export class StudentService {
 
   constructor(private httpClient: HttpClient) {}
 
-  //gets ALL students
   getStudents(): Observable<Student[]> {
     return this.httpClient.get<Student[]>(this.baseApiUrl + '/students');
   }
 
-  //returns a single student
   getStudent(studentId: string): Observable<Student> {
     return this.httpClient.get<Student>(
       this.baseApiUrl + '/students/' + studentId
     ); //added second slash
   }
 
-  //returns an updatedStudent
-
-  updateStudent(
-    studentId: string,
-    studentRequest: Student
-  ): Observable<Student> {
+  updateStudent(studentId: string,studentRequest: Student): Observable<Student> {
     const updateStudentRequest: UpdateStudentRequest = {
       firstName: studentRequest.firstName,
       lastName: studentRequest.lastName,
@@ -62,10 +52,6 @@ export class StudentService {
 
   addStudent(studentRequest: Student): Observable<Student> {
 
-    // const genderIdGuid = uuidv4(); //this might be working!!
-    // studentRequest.genderId = genderIdGuid;
-    // studentRequest.dateOfBirth = new Date(studentRequest.dateOfBirth).toISOString();
-
     const addStudentRequest: AddStudentRequest = {
       firstName: studentRequest.firstName,
       lastName: studentRequest.lastName,
@@ -79,5 +65,18 @@ export class StudentService {
       this.baseApiUrl + '/students/add',
       addStudentRequest
     );
+  }
+  uploadImage(studentId: string, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append("profileImage", file)
+
+    return this.httpClient.post(this.baseApiUrl + '/students/' + studentId + '/upload-image',
+    formData, {
+      responseType: 'text'
+    } )
+  }
+
+  getImagePath(relativePath: string){
+    return `${this.baseApiUrl}/${relativePath}`;
   }
 }
