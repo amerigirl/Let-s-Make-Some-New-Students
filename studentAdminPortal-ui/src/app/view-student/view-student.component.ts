@@ -136,7 +136,7 @@ export class ViewStudentComponent implements OnInit {
     if (this.studentId) {
       const file: File = event.target.files[0];
       this.studentService
-        .uploadImage(this.studentId, file)
+        .uploadImage(this.student.id, file)
         .subscribe((successResponse) => {
           this.student.profileImageUrl = successResponse;
           this.setImage();

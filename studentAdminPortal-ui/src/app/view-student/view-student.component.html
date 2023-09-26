@@ -162,11 +162,13 @@
       </div>
 
     <div class="row">
-      <div class="col xs-12">
+      <div class="col xs-12" >
         <input hidden type="file" #imageUpload (change)="uploadImage($event)">
-        <button mat-raised-button color="primary" (click)="imageUpload.click()">Upload Image</button>
+        <button mat-raised-button color="primary"*ngIf="!isNewStudent" (click)="imageUpload.click()">Upload Image</button>
       </div>
     </div>
+    <p>! Please create your account <br>before updating image :)</p>
+
     </div>
   </div>
 </div>

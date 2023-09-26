@@ -22,3 +22,9 @@ image-container
   align-items: center;
   overflow: hidden;
  }
+
+ p{
+  text-align: center;
+  font-size: 12px;
+  color: #850101;
+ }
