@@ -1,7 +1,9 @@
 # Lets-Make-Some-New-Students
 
 # Description
-This app will give you an opportunity to create a new student with all the basic demographic information necessary.  It will also allow you, once created, to upload an image that shows your student, along with the ability to change your image and basic demographic data at any time. This app uses the Angular framework with Angular Materials for styling.
+This app will give you an opportunity to create a new student with all the basic demographic information necessary.  It will also allow you, once created, to upload an image that shows your student, along with the ability to change your image and basic demographic data at any time. This app uses the Angular framework with Angular Materials for styling.  
+
+This is a basic CRUD app designed to give you practice with the foundational elements of working with Angular and connecting to an API to provide access to a database for persistent storage. 
 
 # Getting Started
 
