@@ -28,3 +28,8 @@ image-container
   font-size: 12px;
   color: #850101;
  }
+
+.buttonRow{
+  text-align: center;
+  margin-top: 25px;
+}
