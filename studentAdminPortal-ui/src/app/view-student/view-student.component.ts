@@ -1,12 +1,13 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Component, ErrorHandler, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { timeInterval } from 'rxjs';
+import { throwError, timeInterval } from 'rxjs';
 import { Gender } from '../models/ui-models/gender.model';
 import { Student } from '../models/ui-models/student.model';
 import { GenderService } from '../services/gender.service';
 import { StudentService } from '../students/student.service';
+
 
 @Component({
   selector: 'app-view-student',
@@ -129,7 +130,8 @@ export class ViewStudentComponent implements OnInit {
         setTimeout(() => {
           this.router.navigateByUrl('');
         }, 2000);
-      });
+      })
+
   }
 
   uploadImage(event: any): void {
@@ -151,7 +153,9 @@ export class ViewStudentComponent implements OnInit {
   private setImage(): void {
     if (this.student.profileImageUrl) {
       //fetch the image by url
-      this.displayProfileImageUrl = this.studentService.getImagePath(this.student.profileImageUrl);
+      this.displayProfileImageUrl = this.studentService.getImagePath(
+        this.student.profileImageUrl
+      );
     } else {
       //display default
       this.displayProfileImageUrl = 'assets/User.png';
