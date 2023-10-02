@@ -29,7 +29,9 @@
                 matInput
                 [(ngModel)]="student.firstName"
                 name="firstName"
+                required
               />
+              <mat-error>First Name is a required field</mat-error>
             </mat-form-field>
           </div>
 
@@ -41,7 +43,9 @@
                 matInput
                 [(ngModel)]="student.lastName"
                 name="lastName"
+                required
               />
+              <mat-error>Last Name is a required field</mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -55,12 +59,15 @@
                 [matDatepicker]="picker"
                 [(ngModel)]="student.dateOfBirth"
                 name="dateOfBirth"
+                required
               />
               <mat-datepicker-toggle
                 matSuffix
                 [for]="picker"
               ></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
+              <mat-error>DOB is a required field</mat-error>
+
             </mat-form-field>
           </div>
         </div>
@@ -73,7 +80,9 @@
                 matInput
                 [(ngModel)]="student.email"
                 name="email"
+                required
               />
+              <mat-error>Email <Address></Address> is a required field</mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -98,7 +107,9 @@
                 matInput
                 [(ngModel)]="student.mobile"
                 name="mobile"
+                required
               />
+              <mat-error>Mobileis a required field</mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -124,7 +135,9 @@
                 matInput
                 [(ngModel)]="student.address.postalAddress"
                 name="postalAddress"
+                required
               ></textarea>
+              <mat-error>Postal Address is a required field</mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -150,7 +163,6 @@
       </form>
     </div>
     <div class="col-xs-6">
-
       <div class="row center-xs">
         <div class="image-container">
           <img
@@ -161,14 +173,27 @@
         </div>
       </div>
 
-    <div class="buttonRow">
-      <div class="col xs-12">
-        <input hidden type="file" #imageUpload (change)="uploadImage($event)">
-        <button mat-raised-button color="primary"*ngIf="!isNewStudent" (click)="imageUpload.click()"> New Image </button>
+      <div class="buttonRow">
+        <div class="col xs-12">
+          <input
+            hidden
+            type="file"
+            #imageUpload
+            (change)="uploadImage($event)"
+          />
+          <button
+            mat-raised-button
+            color="primary"
+            *ngIf="!isNewStudent"
+            (click)="imageUpload.click()"
+          >
+            New Image
+          </button>
+        </div>
       </div>
-    </div>
-    <p *ngIf="isNewStudent">! Please create your account <br>before updating image :)</p>
-
+      <p *ngIf="isNewStudent">
+        ! Please create your account <br />before updating image :)
+      </p>
     </div>
   </div>
 </div>
