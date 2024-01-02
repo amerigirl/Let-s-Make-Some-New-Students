@@ -136,6 +136,7 @@ export class ViewStudentComponent implements OnInit {
 
   uploadImage(event: any): void {
     if (this.studentId) {
+      //review line 140: exactly what is happening here?
       const file: File = event.target.files[0];
       this.studentService
         .uploadImage(this.student.id, file)

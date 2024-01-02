@@ -14,7 +14,7 @@ export class Phone implements PipeTransform{
     const midNums = "-" + phoneValue.slice(3,6)
     const finalNums = "-" + phoneValue.slice(7,12)
 
-    return countryCode + areaCode + midNums + finalNums;
+    return `${countryCode} ${areaCode} ${midNums} ${finalNums}`;
   }
 
 }
