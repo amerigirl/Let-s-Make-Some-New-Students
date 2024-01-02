@@ -17,14 +17,16 @@ export class StudentService {
 
   constructor(private httpClient: HttpClient) {}
 
+  //return type is student array because we're getting the full list
   getStudents(): Observable<Student[]> {
     return this.httpClient.get<Student[]>(this.baseApiUrl + '/students');
   }
 
+  //student Id added to get the specific student
   getStudent(studentId: string): Observable<Student> {
     return this.httpClient.get<Student>(
       this.baseApiUrl + '/students/' + studentId
-    ); //added second slash
+    ); 
   }
 
   updateStudent(

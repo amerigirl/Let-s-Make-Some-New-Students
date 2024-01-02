@@ -1,4 +1,5 @@
 
+//creates an interface with only those things we wish to update
 export interface UpdateStudentRequest {
 
 firstName: string,
