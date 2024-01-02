@@ -23,38 +23,38 @@
 
       <ng-container matColumnDef="firstName">
         <th mat-header-cell mat-sort-header *matHeaderCellDef>First Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        <td mat-cell *matCellDef="let data"> {{data.firstName}} </td>
       </ng-container>
 
       <ng-container matColumnDef="lastName">
         <th mat-header-cell mat-sort-header *matHeaderCellDef> Last Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        <td mat-cell *matCellDef="let data"> {{data.lastName}} </td>
       </ng-container>
 
       <ng-container matColumnDef="dateOfBirth">
         <th mat-header-cell mat-sort-header *matHeaderCellDef> Date of Birth </th>
-        <td mat-cell *matCellDef="let element"> {{element.dateOfBirth | date: 'MM-dd-yyyy'}} </td>
+        <td mat-cell *matCellDef="let data"> {{data.dateOfBirth | date: 'MM-dd-yyyy'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        <td mat-cell *matCellDef="let data"> {{data.email}} </td>
       </ng-container>
 
        <ng-container matColumnDef="mobile">
         <th mat-header-cell *matHeaderCellDef> Mobile </th>
-        <td mat-cell *matCellDef="let element"> {{element.mobile | phone }} </td>
+        <td mat-cell *matCellDef="let data"> {{data.mobile | phone }} </td>
       </ng-container>
 
        <ng-container matColumnDef="gender">
         <th mat-header-cell *matHeaderCellDef> Gender </th>
-        <td mat-cell *matCellDef="let element"> {{element.gender.description}} </td>
+        <td mat-cell *matCellDef="let data"> {{data.gender.description}} </td>
       </ng-container>
 
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef> </th>
-         <td mat-cell *matCellDef="let element">
-           <a [routerLink]="['/students', element.id]"> <!--this is how you route directly via the id-->
+         <td mat-cell *matCellDef="let data">
+           <a [routerLink]="['/students', data.id]"> <!--this is how you route directly via the id-->
              <mat-icon color="primary">edit</mat-icon>
            </a>
          </td>

@@ -26,7 +26,7 @@ export class StudentService {
   getStudent(studentId: string): Observable<Student> {
     return this.httpClient.get<Student>(
       this.baseApiUrl + '/students/' + studentId
-    ); 
+    );
   }
 
   updateStudent(
@@ -77,6 +77,7 @@ export class StudentService {
 
   uploadImage(studentId: string, file: File): Observable<any> {
     const formData = new FormData();
+    //prepares the data to be sent as part of the http request
     formData.append('profileImage', file);
 
     return this.httpClient.post(
