@@ -57,6 +57,7 @@ export class StudentService {
     );
   }
 
+  //takes in the api model to connect with the backend
   addStudent(studentRequest: Student): Observable<Student> {
     const addStudentRequest: AddStudentRequest = {
       firstName: studentRequest.firstName,
